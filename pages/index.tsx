@@ -3,12 +3,15 @@ import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import { GetStaticProps } from 'next'
+import React from 'react';
+import Row from '../lib/Row';
 
 interface HomeProps {
-  props: any;
+  data: any;
 }
 
 const Home = ({data}: HomeProps) => {
+  console.log(data)
   return (
     <div className={styles.container}>
       <Head>
@@ -22,11 +25,7 @@ const Home = ({data}: HomeProps) => {
           Welcome to <a href="https://nextjs.org">Next.js!</a>
         </h1>
 
-       {
-          data.map((item: any) => {
-            return <p>{item.type}</p>;
-          })
-    }
+       <Row item={data} />
 
       </main>
 
