@@ -2,8 +2,13 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
+import { GetStaticProps } from 'next'
 
-const Home: NextPage = () => {
+interface HomeProps {
+  props: any;
+}
+
+const Home = ({data}: HomeProps) => {
   return (
     <div className={styles.container}>
       <Head>
@@ -17,40 +22,12 @@ const Home: NextPage = () => {
           Welcome to <a href="https://nextjs.org">Next.js!</a>
         </h1>
 
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.tsx</code>
-        </p>
+       {
+          data.map((item: any) => {
+            return <p>{item.type}</p>;
+          })
+    }
 
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h2>Documentation &rarr;</h2>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h2>Learn &rarr;</h2>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h2>Examples &rarr;</h2>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h2>Deploy &rarr;</h2>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
       </main>
 
       <footer className={styles.footer}>
@@ -67,6 +44,23 @@ const Home: NextPage = () => {
       </footer>
     </div>
   )
+}
+
+export const getStaticProps: GetStaticProps = async ({locale}) => {
+  const res = await fetch("https://dev21.becollective.com/api/v2/coding-challenges/dirs", {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+
+  const json = await res.json()
+  if (json.errors) {
+    console.error(json.errors)
+    throw new Error('Failed to fetch API')
+  }
+
+  return {props: {data: json}}
 }
 
 export default Home
