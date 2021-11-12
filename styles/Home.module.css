@@ -2,6 +2,14 @@
   padding: 0 2rem;
 }
 
+.rowContainer {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  margin-top: 3rem;
+}
+
 .main {
   min-height: 100vh;
   padding: 4rem 0;

@@ -22,10 +22,10 @@ const Home = ({data}: HomeProps) => {
 
       <main className={styles.main}>
         <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
+          I'm the best. Follow me on <a href="https://github.com/SamKomesarook">github</a> or ur fake.
         </h1>
 
-       <Row item={data} />
+<div className={styles.rowContainer}><Row item={data} /></div>
 
       </main>
 
