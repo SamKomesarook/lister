@@ -21,11 +21,11 @@ const Home = ({data}: HomeProps) => {
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>
+        <div className={styles.header}><h1 className={styles.title}>
           I'm the best. Follow me on <a href="https://github.com/SamKomesarook">github</a> or ur fake.
-        </h1>
+        </h1></div>
 
-<div className={styles.rowContainer}><Row item={data} /></div>
+        <div className={styles.rowContainer}><Row item={data} /></div>
 
       </main>
 
