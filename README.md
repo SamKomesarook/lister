@@ -18,6 +18,6 @@ Run `npm run test:e2e` for testing.
 
 ## Further improvements
 
-I'd add some unit tests, although there weren't too many functions that would have benifited from that...
-I'd install and configure prettier cause not having the auto-formatter i'm used to sucks.
-I'd figure out a cleaner way of displaying the expanding lists.
+- Add some unit tests, although there weren't too many functions that would have benifited from that...
+- Install and configure prettier cause not having the auto-formatter i'm used to sucks.
+- Figure out a cleaner way of displaying the expanding lists.
